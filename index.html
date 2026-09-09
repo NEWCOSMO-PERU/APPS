@@ -61,12 +61,19 @@
       to { filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.9)); transform: scale(1.05); }
     }
 
-    /* --- HEADER --- */
+    /* --- HEADER (ESTILO LOBO GAMER) --- */
     header {
       position: fixed; top: 0; width: 100%;
-      background: rgba(5, 8, 17, 0.92);
+      background: 
+        radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.22) 0%, rgba(3, 6, 13, 0.96) 65%),
+        radial-gradient(circle at 15% 30%, rgba(0, 242, 254, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 85% 70%, rgba(0, 242, 254, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 70% 20%, rgba(0, 242, 254, 0.5) 1.5px, transparent 1.5px),
+        #03060d;
+      background-size: 100% 100%, 120px 120px, 160px 160px, 200px 200px;
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.25);
+      box-shadow: 0 4px 25px rgba(0, 242, 254, 0.15);
       z-index: 1000; padding: 14px 0;
     }
 
@@ -83,7 +90,7 @@
 
     .logo-box img {
       width: 48px; height: 48px; object-fit: contain;
-      filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.8));
+      filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.9));
       transition: transform 0.3s;
     }
 
@@ -100,14 +107,18 @@
     }
 
     .cart-btn-header {
-      background: rgba(0, 242, 254, 0.05);
+      background: rgba(0, 242, 254, 0.08);
       border: 1px solid var(--border-color);
       color: var(--text-main); padding: 8px 16px;
       border-radius: 20px; cursor: pointer;
       display: flex; align-items: center; gap: 8px; transition: 0.3s;
     }
 
-    .cart-btn-header:hover { border-color: var(--accent-cyan); }
+    .cart-btn-header:hover { 
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+    }
+    
     .cart-count {
       background: var(--accent-cyan); color: #000;
       font-weight: bold; border-radius: 50%; padding: 2px 7px; font-size: 0.75rem;
@@ -167,7 +178,7 @@
 
     .btn-add-cart:hover { background: var(--accent-cyan); color: #000; }
 
-    /* --- SECCIÓN PAGO CON QR (ESTILO IMAGEN) --- */
+    /* --- SECCIÓN PAGO CON QR --- */
     .vip-checkout-section {
       padding: 60px 24px; text-align: center;
       background: radial-gradient(circle at center, #0a1124 0%, #050811 100%);
@@ -235,7 +246,7 @@
     .faq-answer { padding: 0 16px 16px; color: var(--text-muted); font-size: 0.9rem; display: none; }
     .faq-item.active .faq-answer { display: block; }
 
-    /* --- FOOTER (ESTILO IMAGEN) --- */
+    /* --- FOOTER --- */
     footer {
       background: #020408; border-top: 1px solid rgba(0, 242, 254, 0.1);
       padding: 60px 24px 30px;
@@ -523,14 +534,14 @@
     </div>
   </section>
 
-  <!-- SECCIÓN PAGO CON QR (IGUAL A TU IMAGEN) -->
+  <!-- SECCIÓN PAGO CON QR -->
   <section class="vip-checkout-section" id="checkout">
     <div class="vip-title"><i class="fa-solid fa-star"></i> ACCESO VIP</div>
     <div class="vip-price">S/10</div>
     <div class="vip-subtitle">Pago único - Descarga para siempre</div>
 
     <div class="qr-card-frame">
-      <img src="qr-pago.png" alt="Código QR de Pago">
+      <img src="qr-yape.png" alt="Código QR de Pago">
     </div>
 
     <div class="vip-badges">
@@ -558,7 +569,7 @@
     </div>
   </section>
 
-  <!-- FOOTER (IGUAL A TU IMAGEN) -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-brand">
