@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pack Apps Premium</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --text: #f0f6fc;
+      --accent: #25D366; /* Verde WhatsApp */
+      --accent-hover: #1da851;
+      --subtext: #8b949e;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      padding: 24px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 8px; }
+    p { color: var(--subtext); font-size: 0.9rem; margin-bottom: 20px; }
+    .price { font-size: 1.3rem; font-weight: bold; color: #3fb950; margin-bottom: 15px; }
+    .qr-box { background: white; padding: 12px; border-radius: 8px; display: inline-block; margin-bottom: 20px; }
+    .qr-box img { width: 180px; height: 180px; display: block; }
+    
+    form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    label { font-size: 0.85rem; color: var(--subtext); }
+    input {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+    button:hover { background-color: var(--accent-hover); }
+  </style>
+</head>
+<body>
 
+  <div class="card">
+    <h1>Pack Apps Premium</h1>
+    <p>Escanea el código QR para pagar y presiona el botón para solicitar tu carpeta de apps.</p>
+
+    <div class="price">Monto a pagar: S/ 20.00 / $5.00</div>
+
+    <div class="qr-box">
+      <!-- Coloca aquí la imagen de tu código QR en el repositorio -->
+      <img src="qr-pago.png" alt="Código QR de Pago">
+    </div>
+
+    <form id="paymentForm">
+      <label for="numOp">Número de Operación / Código de Pago:</label>
+      <input type="text" id="numOp" placeholder="Ej: 12345678" required>
+
+      <button type="button" onclick="enviarWhatsApp()">Enviar Comprobante por WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    function enviarWhatsApp() {
+      // 1. REEMPLAZA ESTE NÚMERO POR EL TUYO (Incluye código de país, ej: 51 para Perú)
+      const numeroTelefono = "51987654321"; 
+
+      const numOperacion = document.getElementById("numOp").value;
+
+      if (!numOperacion.trim()) {
+        alert("Por favor ingresa el número de operación de tu pago.");
+        return;
+      }
+
+      // Crear mensaje personalizado
+      const mensaje = `Hola! Ya realicé el pago por QR del Pack de Apps Premium.%0A*N° de Operación:* ${encodeURIComponent(numOperacion)}%0AAdjunto el comprobante. ¡Quedo atento al enlace de la carpeta!`;
+
+      // Redirigir a WhatsApp
+      const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
+      window.open(urlWhatsApp, "_blank");
+    }
+  </script>
+
+</body>
+</html>
