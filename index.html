@@ -61,16 +61,10 @@
       to { filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.9)); transform: scale(1.05); }
     }
 
-    /* --- HEADER (ESTILO LOBO GAMER) --- */
+    /* --- HEADER (Navegación Fija) --- */
     header {
       position: fixed; top: 0; width: 100%;
-      background: 
-        radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.22) 0%, rgba(3, 6, 13, 0.96) 65%),
-        radial-gradient(circle at 15% 30%, rgba(0, 242, 254, 0.4) 1px, transparent 1px),
-        radial-gradient(circle at 85% 70%, rgba(0, 242, 254, 0.4) 1px, transparent 1px),
-        radial-gradient(circle at 70% 20%, rgba(0, 242, 254, 0.5) 1.5px, transparent 1.5px),
-        #03060d;
-      background-size: 100% 100%, 120px 120px, 160px 160px, 200px 200px;
+      background: rgba(3, 6, 13, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0, 242, 254, 0.25);
       box-shadow: 0 4px 25px rgba(0, 242, 254, 0.15);
@@ -124,9 +118,66 @@
       font-weight: bold; border-radius: 50%; padding: 2px 7px; font-size: 0.75rem;
     }
 
+    /* --- HERO SECTION CON ESTILO LOBO --- */
+    .hero-section {
+      margin-top: 76px;
+      padding: 70px 24px 50px;
+      text-align: center;
+      position: relative;
+      background: 
+        radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.25) 0%, rgba(3, 6, 13, 0.98) 65%),
+        radial-gradient(circle at 15% 30%, rgba(0, 242, 254, 0.4) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 85% 70%, rgba(0, 242, 254, 0.4) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 70% 20%, rgba(0, 242, 254, 0.5) 2px, transparent 2px),
+        #03060d;
+      background-size: 100% 100%, 120px 120px, 160px 160px, 200px 200px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .hero-logo-img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px rgba(0, 242, 254, 0.85));
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
     /* --- CATÁLOGO DE APPS --- */
     .apps-section {
-      max-width: 1200px; margin: 110px auto 60px;
+      max-width: 1200px; margin: 40px auto 60px;
       padding: 0 24px;
     }
 
@@ -345,6 +396,8 @@
     .cart-footer { border-top: 1px solid var(--border-color); padding-top: 16px; }
 
     @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; }
+      .hero-logo-img { width: 160px; height: 160px; }
       .footer-container { grid-template-columns: 1fr; gap: 30px; }
     }
   </style>
@@ -372,6 +425,17 @@
       </button>
     </div>
   </header>
+
+  <!-- HERO SECTION CON LOGO DEL LOBO -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-logo-wrapper">
+        <img src="logo.png" alt="Logo Lobo Premium" class="hero-logo-img">
+      </div>
+      <h1 class="hero-title">SUPER APPS <span>PREMIUM</span></h1>
+      <p class="hero-description">Consigue las mejores aplicaciones en su versión más completa, sin anuncios y con acceso inmediato.</p>
+    </div>
+  </section>
 
   <!-- CATÁLOGO (12 APPS) -->
   <section class="apps-section">
