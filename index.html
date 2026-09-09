@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WolfApps Premium - Tienda de Apps</title>
+  <title>SUPER APPS PREMIUM</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg-dark: #0B0E14;
-      --bg-card: #151A23;
-      --bg-card-hover: #1C2330;
+      --bg-dark: #050811;
+      --bg-card: #0d121f;
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
-      --accent-green: #25D366;
-      --text-main: #F3F4F6;
-      --text-muted: #9CA3AF;
-      --border-color: rgba(255, 255, 255, 0.08);
+      --accent-green: #00e676;
+      --text-main: #ffffff;
+      --text-muted: #a0aec0;
+      --border-color: rgba(0, 242, 254, 0.15);
     }
 
     * {
@@ -33,35 +32,26 @@
       overflow-x: hidden;
     }
 
-    /* --- SPLASH SCREEN (Pantalla de Carga) --- */
+    /* --- SPLASH SCREEN --- */
     #splash {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
+      top: 0; left: 0; width: 100%; height: 100vh;
       background: var(--bg-dark);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s;
     }
 
     .splash-logo {
-      width: 100px;
-      height: 100px;
+      width: 110px; height: 110px;
       animation: pulseGlow 1.5s infinite alternate;
     }
 
     .loader {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(0, 242, 254, 0.2);
+      width: 40px; height: 40px;
+      border: 3px solid rgba(0, 242, 254, 0.1);
       border-top-color: var(--accent-cyan);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      border-radius: 50%; animation: spin 0.8s linear infinite;
       margin-top: 20px;
     }
 
@@ -71,116 +61,62 @@
       to { filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.9)); transform: scale(1.05); }
     }
 
-    /* --- HEADER CON LOGO BRILLANTE --- */
+    /* --- HEADER --- */
     header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(11, 14, 20, 0.9);
+      position: fixed; top: 0; width: 100%;
+      background: rgba(5, 8, 17, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
-      z-index: 1000;
-      padding: 12px 0;
+      z-index: 1000; padding: 14px 0;
     }
 
     .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 0 24px;
     }
 
     .logo-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
       text-decoration: none;
     }
 
     .logo-box img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6));
-      transition: filter 0.3s ease, transform 0.3s ease;
+      width: 48px; height: 48px; object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.8));
+      transition: transform 0.3s;
     }
 
-    .logo-box:hover img {
-      filter: drop-shadow(0 0 22px rgba(0, 242, 254, 1));
-      transform: scale(1.08);
-    }
+    .logo-box:hover img { transform: scale(1.08); }
 
     .logo-text {
-      font-size: 1.4rem;
-      font-weight: 800;
+      font-size: 1.3rem; font-weight: 800; color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
       background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 1px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* Botón Carrito en Header */
     .cart-btn-header {
-      position: relative;
-      background: var(--bg-card);
+      background: rgba(0, 242, 254, 0.05);
       border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
+      color: var(--text-main); padding: 8px 16px;
+      border-radius: 20px; cursor: pointer;
+      display: flex; align-items: center; gap: 8px; transition: 0.3s;
     }
 
-    .cart-btn-header:hover {
-      border-color: var(--accent-cyan);
-    }
-
+    .cart-btn-header:hover { border-color: var(--accent-cyan); }
     .cart-count {
-      background: var(--accent-cyan);
-      color: #000;
-      font-weight: bold;
-      border-radius: 50%;
-      padding: 2px 7px;
-      font-size: 0.75rem;
+      background: var(--accent-cyan); color: #000;
+      font-weight: bold; border-radius: 50%; padding: 2px 7px; font-size: 0.75rem;
     }
 
-    /* --- HERO --- */
-    .hero {
-      padding: 130px 24px 40px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* --- CATÁLOGO DE 12 APPS (TARJETAS CON IMÁGENES) --- */
+    /* --- CATÁLOGO DE APPS --- */
     .apps-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 24px 80px;
+      max-width: 1200px; margin: 110px auto 60px;
+      padding: 0 24px;
     }
 
     .apps-grid {
@@ -192,222 +128,214 @@
     .app-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
+      border-radius: 16px; overflow: hidden;
+      transition: 0.3s; display: flex; flex-direction: column;
     }
 
     .app-card:hover {
       transform: translateY(-5px);
       border-color: rgba(0, 242, 254, 0.4);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
     .app-card-img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
+      width: 100%; height: 140px; object-fit: cover;
       border-bottom: 1px solid var(--border-color);
     }
 
     .app-card-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+      padding: 16px; display: flex; flex-direction: column; flex-grow: 1;
     }
 
-    .app-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-
-    .app-card p {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      flex-grow: 1;
-    }
+    .app-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .app-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; flex-grow: 1; }
 
     .app-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       margin-top: 10px;
     }
 
-    .app-price {
-      font-weight: bold;
-      color: #3fb950;
-    }
+    .app-price { font-weight: bold; color: var(--accent-green); }
 
     .btn-add-cart {
       background: rgba(0, 242, 254, 0.1);
       border: 1px solid var(--accent-cyan);
-      color: var(--accent-cyan);
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 600;
+      color: var(--accent-cyan); padding: 6px 12px;
+      border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600;
       transition: 0.3s;
     }
 
-    .btn-add-cart:hover {
-      background: var(--accent-cyan);
-      color: #000;
+    .btn-add-cart:hover { background: var(--accent-cyan); color: #000; }
+
+    /* --- SECCIÓN PAGO CON QR (ESTILO IMAGEN) --- */
+    .vip-checkout-section {
+      padding: 60px 24px; text-align: center;
+      background: radial-gradient(circle at center, #0a1124 0%, #050811 100%);
     }
 
-    /* --- CHECKOUT Y QR --- */
-    .checkout-section {
-      background: #0f141d;
-      padding: 60px 24px;
-      border-top: 1px solid var(--border-color);
+    .vip-title {
+      font-size: 2.2rem; font-weight: 900;
+      color: var(--accent-cyan); text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 5px;
     }
 
-    .checkout-box {
-      max-width: 480px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 28px;
-      text-align: center;
+    .vip-price {
+      font-size: 3.8rem; font-weight: 900; color: #00e676;
+      text-shadow: 0 0 20px rgba(0, 230, 118, 0.4); line-height: 1;
+      margin-bottom: 5px;
     }
 
-    .qr-box {
-      background: #fff;
-      padding: 12px;
-      border-radius: 12px;
-      display: inline-block;
-      margin: 16px 0;
+    .vip-subtitle {
+      color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;
     }
 
-    .qr-box img {
-      width: 160px;
-      height: 160px;
-      display: block;
+    .qr-card-frame {
+      background: #0d1224; border: 1px solid #1a233d;
+      border-radius: 20px; padding: 20px; display: inline-block;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6); margin-bottom: 25px;
     }
 
-    .form-group {
-      text-align: left;
-      margin-bottom: 14px;
+    .qr-card-frame img {
+      width: 200px; height: 200px; border-radius: 12px; display: block;
     }
 
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+    .vip-badges {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 12px; max-width: 500px; margin: 0 auto 25px;
     }
 
-    .form-group input {
-      width: 100%;
-      padding: 10px;
-      background: #0B0E14;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: #fff;
+    .vip-badge {
+      background: rgba(0, 242, 254, 0.03);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      border-radius: 30px; padding: 8px 18px;
+      font-size: 0.85rem; color: #fff;
+      display: flex; align-items: center; gap: 8px;
     }
 
-    .btn-checkout {
-      width: 100%;
-      background: var(--accent-green);
-      color: #fff;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.95rem;
+    .vip-badge i { color: #00e676; }
+
+    .btn-whatsapp-vip {
+      background: #00e676; color: #000;
+      padding: 16px 32px; border-radius: 30px;
+      font-size: 1.1rem; font-weight: 800; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
+      transition: 0.3s; border: none; cursor: pointer;
     }
 
-    /* --- BOTÓN FLOTANTE WHATSAPP --- */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 56px;
-      height: 56px;
-      background-color: var(--accent-green);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.8rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      z-index: 1000;
-      text-decoration: none;
-      transition: 0.3s;
+    .btn-whatsapp-vip:hover {
+      transform: scale(1.03); box-shadow: 0 0 30px rgba(0, 230, 118, 0.7);
     }
 
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-    }
-
-    /* --- MODAL CARRITO DE COMPRAS --- */
-    .cart-modal {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 100%;
-      max-width: 380px;
-      height: 100vh;
-      background: var(--bg-card);
-      border-left: 1px solid var(--border-color);
-      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-      z-index: 1001;
-      transition: 0.4s ease;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cart-modal.open {
-      right: 0;
-    }
-
-    .cart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
-    }
-
-    .cart-items {
-      flex-grow: 1;
-      overflow-y: auto;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      background: var(--bg-dark);
-      padding: 10px;
-      border-radius: 8px;
-    }
-
-    .cart-footer {
-      border-top: 1px solid var(--border-color);
-      padding-top: 16px;
-    }
-
-    /* --- FAQ & FOOTER --- */
+    /* --- PREGUNTAS FRECUENTES --- */
     .faq-section { max-width: 800px; margin: 60px auto; padding: 0 24px; }
     .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; margin-bottom: 10px; }
     .faq-question { padding: 16px; width: 100%; text-align: left; background: none; border: none; color: #fff; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
     .faq-answer { padding: 0 16px 16px; color: var(--text-muted); font-size: 0.9rem; display: none; }
     .faq-item.active .faq-answer { display: block; }
 
-    footer { background: #07090d; border-top: 1px solid var(--border-color); padding: 40px 24px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+    /* --- FOOTER (ESTILO IMAGEN) --- */
+    footer {
+      background: #020408; border-top: 1px solid rgba(0, 242, 254, 0.1);
+      padding: 60px 24px 30px;
+    }
+
+    .footer-container {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+
+    .footer-brand .logo-box { margin-bottom: 16px; }
+
+    .footer-brand h2 {
+      font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 10px;
+    }
+
+    .footer-brand h2 span {
+      color: var(--accent-cyan); text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    }
+
+    .footer-brand p {
+      color: var(--text-muted); font-size: 0.9rem; max-width: 380px; margin-bottom: 20px;
+    }
+
+    .footer-icons { display: flex; gap: 12px; }
+
+    .footer-icon-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; text-decoration: none; transition: 0.3s;
+      background: rgba(0, 242, 254, 0.02);
+    }
+
+    .footer-icon-btn:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); color: var(--accent-cyan);
+    }
+
+    .footer-col h3 {
+      font-size: 1.1rem; font-weight: 700; color: #fff;
+      margin-bottom: 20px; position: relative; display: inline-block;
+    }
+
+    .footer-col h3::after {
+      content: ''; position: absolute; bottom: -6px; left: 0;
+      width: 30px; height: 2px; background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+
+    .footer-col ul li a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+      display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover { color: var(--accent-cyan); }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 12px;
+      color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;
+    }
+
+    .contact-item i {
+      color: var(--accent-cyan); font-size: 1.1rem;
+      filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.5));
+    }
+
+    /* --- BOTÓN FLOTANTE WHATSAPP --- */
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 56px; height: 56px; background-color: var(--accent-green);
+      color: white; border-radius: 50%; display: flex;
+      justify-content: center; align-items: center; font-size: 1.8rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5); z-index: 1000;
+      text-decoration: none; transition: 0.3s;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* --- MODAL CARRITO --- */
+    .cart-modal {
+      position: fixed; top: 0; right: -100%; width: 100%;
+      max-width: 380px; height: 100vh; background: var(--bg-card);
+      border-left: 1px solid var(--border-color); z-index: 1001;
+      transition: 0.4s ease; padding: 24px; display: flex; flex-direction: column;
+    }
+
+    .cart-modal.open { right: 0; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px; }
+    .cart-items { flex-grow: 1; overflow-y: auto; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: var(--bg-dark); padding: 10px; border-radius: 8px; }
+    .cart-footer { border-top: 1px solid var(--border-color); padding-top: 16px; }
+
+    @media (max-width: 768px) {
+      .footer-container { grid-template-columns: 1fr; gap: 30px; }
+    }
   </style>
 </head>
 <body>
@@ -422,25 +350,17 @@
   <header>
     <div class="nav-container">
       <a href="#" class="logo-box">
-        <img src="logo.png" alt="WolfApps Logo">
-        <span class="logo-text">WOLFAPPS</span>
+        <img src="logo.png" alt="Logo Super Apps Premium">
+        <span class="logo-text">SUPER APPS <span>PREMIUM</span></span>
       </a>
 
-      <div class="header-actions">
-        <button class="cart-btn-header" onclick="toggleCart()">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span>Carrito</span>
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
-      </div>
+      <button class="cart-btn-header" onclick="toggleCart()">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Carrito</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
     </div>
   </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Elige tus <span>Apps Premium</span> o Llévate el Pack Completo</h1>
-    <p>Añade aplicaciones individuales a tu carrito o realiza un pago único por el paquete total.</p>
-  </section>
 
   <!-- CATÁLOGO (12 APPS) -->
   <section class="apps-section">
@@ -476,7 +396,7 @@
         <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&auto=format&fit=crop" class="app-card-img" alt="VPN">
         <div class="app-card-body">
           <h3>VPN Shield Ultra</h3>
-          <p>Navegación segura y servidores ilimitados en todo el mundo.</p>
+          <p>Navegación segura y servidores ilimitados.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
             <button class="btn-add-cart" onclick="addToCart('VPN Shield Ultra', 5)">Añadir</button>
@@ -489,7 +409,7 @@
         <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop" class="app-card-img" alt="IA Photo">
         <div class="app-card-body">
           <h3>AI Photo Enhancer</h3>
-          <p>Mejora la calidad de fotos antiguas con IA.</p>
+          <p>Mejora fotos antiguas automáticamente con IA.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
             <button class="btn-add-cart" onclick="addToCart('AI Photo Enhancer', 5)">Añadir</button>
@@ -502,7 +422,7 @@
         <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&auto=format&fit=crop" class="app-card-img" alt="Antivirus">
         <div class="app-card-body">
           <h3>Antivirus Security</h3>
-          <p>Protección en tiempo real contra amenazas móviles.</p>
+          <p>Protección en tiempo real contra todo malware.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
             <button class="btn-add-cart" onclick="addToCart('Antivirus Security', 5)">Añadir</button>
@@ -512,23 +432,23 @@
 
       <!-- App 6 -->
       <div class="app-card">
-        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&auto=format&fit=crop" class="app-card-img" alt="Clean Master">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&auto=format&fit=crop" class="app-card-img" alt="Cleaner">
         <div class="app-card-body">
-          <h3>Cleaner Speed Booster</h3>
-          <p>Acelera la memoria RAM y limpia espacio basurero.</p>
+          <h3>Cleaner Booster</h3>
+          <p>Acelera la memoria y libera espacio de almacenamiento.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
-            <button class="btn-add-cart" onclick="addToCart('Cleaner Speed Booster', 5)">Añadir</button>
+            <button class="btn-add-cart" onclick="addToCart('Cleaner Booster', 5)">Añadir</button>
           </div>
         </div>
       </div>
 
       <!-- App 7 -->
       <div class="app-card">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&auto=format&fit=crop" class="app-card-img" alt="Fitness Pro">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&auto=format&fit=crop" class="app-card-img" alt="Fitness">
         <div class="app-card-body">
           <h3>Fitness Trainer Pro</h3>
-          <p>Rutinas personalizadas y planes de nutrición VIP.</p>
+          <p>Rutinas personalizadas y planes de entrenamiento.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
             <button class="btn-add-cart" onclick="addToCart('Fitness Trainer Pro', 5)">Añadir</button>
@@ -538,23 +458,23 @@
 
       <!-- App 8 -->
       <div class="app-card">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&auto=format&fit=crop" class="app-card-img" alt="Cloud Storage">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&auto=format&fit=crop" class="app-card-img" alt="Cloud">
         <div class="app-card-body">
-          <h3>Cloud Storage Vault</h3>
-          <p>Espacio seguro en la nube para respaldos automáticos.</p>
+          <h3>Cloud Vault</h3>
+          <p>Almacenamiento seguro en la nube sin límites.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
-            <button class="btn-add-cart" onclick="addToCart('Cloud Storage Vault', 5)">Añadir</button>
+            <button class="btn-add-cart" onclick="addToCart('Cloud Vault', 5)">Añadir</button>
           </div>
         </div>
       </div>
 
       <!-- App 9 -->
       <div class="app-card">
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&auto=format&fit=crop" class="app-card-img" alt="Game Booster">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&auto=format&fit=crop" class="app-card-img" alt="Games">
         <div class="app-card-body">
           <h3>Game Optimizer VIP</h3>
-          <p>Reduce el lag y aumenta los FPS en todos tus juegos.</p>
+          <p>Optimiza FPS y reduce el lag en juegos.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
             <button class="btn-add-cart" onclick="addToCart('Game Optimizer VIP', 5)">Añadir</button>
@@ -564,26 +484,26 @@
 
       <!-- App 10 -->
       <div class="app-card">
-        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&auto=format&fit=crop" class="app-card-img" alt="Ebook Reader">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&auto=format&fit=crop" class="app-card-img" alt="Ebook">
         <div class="app-card-body">
-          <h3>EBook Reader Premium</h3>
-          <p>Lector de audiolibros y PDF con funciones avanzadas.</p>
+          <h3>EBook Reader Pro</h3>
+          <p>Lector de audiolibros y PDF avanzados.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
-            <button class="btn-add-cart" onclick="addToCart('EBook Reader Premium', 5)">Añadir</button>
+            <button class="btn-add-cart" onclick="addToCart('EBook Reader Pro', 5)">Añadir</button>
           </div>
         </div>
       </div>
 
       <!-- App 11 -->
       <div class="app-card">
-        <img src="https://images.unsplash.com/photo-1585079542156-2755d9c8a094?w=400&auto=format&fit=crop" class="app-card-img" alt="Cam Scanner">
+        <img src="https://images.unsplash.com/photo-1585079542156-2755d9c8a094?w=400&auto=format&fit=crop" class="app-card-img" alt="Scanner">
         <div class="app-card-body">
-          <h3>Document Scanner HD</h3>
-          <p>Escanea documentos a PDF sin marcas de agua.</p>
+          <h3>Scanner HD Pro</h3>
+          <p>Escaneo de documentos a PDF en HD.</p>
           <div class="app-card-footer">
             <span class="app-price">S/ 5.00</span>
-            <button class="btn-add-cart" onclick="addToCart('Document Scanner HD', 5)">Añadir</button>
+            <button class="btn-add-cart" onclick="addToCart('Scanner HD Pro', 5)">Añadir</button>
           </div>
         </div>
       </div>
@@ -592,66 +512,103 @@
       <div class="app-card">
         <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&auto=format&fit=crop" class="app-card-img" alt="Pack Completo">
         <div class="app-card-body">
-          <h3>🔥 PACK COMPLETO (TODAS)</h3>
-          <p>Acceso a las 12 apps + carpeta con futuras actualizaciones.</p>
+          <h3>🔥 PACK COMPLETO VIP</h3>
+          <p>Acceso ilimitado a todas las apps del catálogo.</p>
           <div class="app-card-footer">
-            <span class="app-price" style="font-size: 1.1rem;">S/ 20.00</span>
-            <button class="btn-add-cart" style="background: var(--accent-cyan); color:#000;" onclick="addToCart('PACK COMPLETO (12 Apps)', 20)">Añadir Pack</button>
+            <span class="app-price" style="font-size: 1.1rem;">S/ 10.00</span>
+            <button class="btn-add-cart" style="background: var(--accent-cyan); color:#000;" onclick="addToCart('PACK COMPLETO VIP', 10)">Añadir Pack</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PAGO POR QR -->
-  <section class="checkout-section" id="checkout">
-    <div class="checkout-box">
-      <h2>Pagar por Código QR</h2>
-      <p style="color: var(--text-muted); font-size: 0.85rem;">Escanía con tu app bancaria (Yape, Plin, BCP, etc.)</p>
+  <!-- SECCIÓN PAGO CON QR (IGUAL A TU IMAGEN) -->
+  <section class="vip-checkout-section" id="checkout">
+    <div class="vip-title"><i class="fa-solid fa-star"></i> ACCESO VIP</div>
+    <div class="vip-price">S/10</div>
+    <div class="vip-subtitle">Pago único - Descarga para siempre</div>
 
-      <div class="qr-box">
-        <img src="qr-pago.png" alt="Código QR">
-      </div>
+    <div class="qr-card-frame">
+      <img src="qr-pago.png" alt="Código QR de Pago">
+    </div>
 
-      <form id="paymentForm">
-        <div class="form-group">
-          <label for="numOp">Número de Operación del Pago:</label>
-          <input type="text" id="numOp" placeholder="Ej: 87654321" required>
-        </div>
+    <div class="vip-badges">
+      <div class="vip-badge"><i class="fa-solid fa-circle-check"></i> Escanea y paga S/ 10</div>
+      <div class="vip-badge"><i class="fa-solid fa-circle-check"></i> Captura el comprobante</div>
+      <div class="vip-badge"><i class="fa-solid fa-circle-check"></i> Recibe tu enlace al instante</div>
+    </div>
 
-        <button type="button" class="btn-checkout" onclick="enviarWhatsApp()">
-          <i class="fa-brands fa-whatsapp"></i> Confirmar Pedido por WhatsApp
-        </button>
-      </form>
+    <div>
+      <button class="btn-whatsapp-vip" onclick="enviarWhatsApp()">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Enviar Captura por WhatsApp
+      </button>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="faq-section">
     <div class="faq-item">
-      <button class="faq-question">¿Cómo me entregan el enlace? <i class="fa-solid fa-chevron-down"></i></button>
-      <div class="faq-answer">Al confirmar tu número de operación por WhatsApp, te compartiremos el enlace de acceso a la carpeta privada de Google Drive con los archivos.</div>
+      <button class="faq-question">¿Cómo recibiré la carpeta con las aplicaciones? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">Al hacer clic en "Enviar Captura por WhatsApp", se abrirá el chat. Nos envías la imagen del pago y te responderemos al instante con el enlace directo.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-question">¿Puedo comprar solo una app? <i class="fa-solid fa-chevron-down"></i></button>
-      <div class="faq-answer">Sí, puedes agregar aplicaciones individuales a tu carrito o seleccionar el Pack Completo con descuento especial.</div>
+      <button class="faq-question">¿Recibiré actualizaciones? <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="faq-answer">Sí, la carpeta en la nube se actualiza periódicamente con las versiones más recientes de cada app.</div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (IGUAL A TU IMAGEN) -->
   <footer>
-    <p>&copy; 2026 WolfApps Premium. Todos los derechos reservados.</p>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-box">
+          <img src="logo.png" alt="Logo Super Apps Premium">
+        </div>
+        <h2>SUPER APPS <span>PREMIUM</span></h2>
+        <p>Tu mejor opción para obtener las mejores aplicaciones móviles sin restricciones y en la más alta calidad. Únete a miles de usuarios satisfechos.</p>
+        
+        <div class="footer-icons">
+          <a href="#" class="footer-icon-btn"><i class="fa-solid fa-book"></i></a>
+          <a href="#" class="footer-icon-btn"><i class="fa-solid fa-wrench"></i></a>
+          <a href="#" class="footer-icon-btn"><i class="fa-solid fa-store"></i></a>
+          <a href="#" class="footer-icon-btn"><i class="fa-solid fa-image"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-cyan);"></i> Catálogo de Muestras</a></li>
+          <li><a href="#checkout"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-cyan);"></i> Acceso VIP</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent-cyan);"></i> Dudas Frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <div class="contact-item">
+          <i class="fa-brands fa-whatsapp"></i> +51 907546093
+        </div>
+        <div class="contact-item">
+          <i class="fa-regular fa-envelope"></i> www.newcosmo@outlook.es.com
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-location-dot"></i> Disponible en toda Latinoamérica
+        </div>
+      </div>
+    </div>
   </footer>
 
   <!-- BOTÓN FLOTANTE WHATSAPP -->
-  <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+  <a href="https://wa.me/51907546093" class="whatsapp-float" target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- MODAL CARRITO DE COMPRAS -->
+  <!-- MODAL CARRITO -->
   <div class="cart-modal" id="cartModal">
     <div class="cart-header">
-      <h3>Tu Carrito de Apps</h3>
+      <h3>Tu Carrito</h3>
       <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 1.2rem;" onclick="toggleCart()"></i>
     </div>
     <div class="cart-items" id="cartItems">
@@ -662,21 +619,21 @@
         <span>Total:</span>
         <span id="cartTotal">S/ 0.00</span>
       </div>
-      <a href="#checkout" class="btn-checkout" style="text-align: center; text-decoration: none; display: block;" onclick="toggleCart()">Proceder al Pago</a>
+      <a href="#checkout" class="btn-whatsapp-vip" style="width: 100%; text-align: center; justify-content: center; border-radius: 8px; padding: 10px;" onclick="toggleCart()">Ir a Pagar</a>
     </div>
   </div>
 
   <script>
-    // 1. Splash Screen
+    // Splash Screen
     window.addEventListener('load', () => {
       setTimeout(() => {
         const splash = document.getElementById('splash');
         splash.style.opacity = '0';
         splash.style.visibility = 'hidden';
-      }, 800);
+      }, 700);
     });
 
-    // 2. Carrito de Compras
+    // Carrito de compras
     let cart = [];
 
     function toggleCart() {
@@ -716,7 +673,7 @@
           <div class="cart-item">
             <div>
               <div style="font-size:0.9rem; font-weight:600;">${item.title}</div>
-              <div style="color:#3fb950; font-size:0.8rem;">S/ ${item.price.toFixed(2)}</div>
+              <div style="color:#00e676; font-size:0.8rem;">S/ ${item.price.toFixed(2)}</div>
             </div>
             <i class="fa-solid fa-trash" style="color:#ff5555; cursor:pointer;" onclick="removeFromCart(${index})"></i>
           </div>
@@ -726,25 +683,18 @@
       cartTotal.innerText = `S/ ${total.toFixed(2)}`;
     }
 
-    // 3. Envío a WhatsApp
+    // Redirección a WhatsApp
     function enviarWhatsApp() {
-      const numeroTelefono = "51987654321"; // Reemplaza por tu número
-      const numOperacion = document.getElementById("numOp").value;
-
-      if (!numOperacion.trim()) {
-        alert("Por favor ingresa el número de operación del pago.");
-        return;
-      }
-
+      const numeroTelefono = "51907546093";
       let detallePedido = cart.map(i => `- ${i.title}`).join('%0A');
-      if (cart.length === 0) detallePedido = "- Pack de Apps";
+      if (cart.length === 0) detallePedido = "- Acceso VIP Pack Completo (S/10)";
 
-      const mensaje = `Hola WolfApps! 👋%0A%0ARealicé el pago de mi pedido:%0A${detallePedido}%0A%0A*N° de Operación:* ${encodeURIComponent(numOperacion)}%0A%0AQuedo a la espera del enlace.`;
+      const mensaje = `Hola! 👋 Adjunto el comprobante de pago para SUPER APPS PREMIUM.%0A%0A*Pedido:*%0A${detallePedido}%0A%0AQuedo atento al enlace de la carpeta.`;
 
       window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, '_blank');
     }
 
-    // 4. Acordeón FAQ
+    // Acordeón FAQ
     document.querySelectorAll('.faq-question').forEach(button => {
       button.addEventListener('click', () => {
         button.parentElement.classList.toggle('active');
