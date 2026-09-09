@@ -3,92 +3,597 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pack Apps Premium</title>
+  <title>WolfApps Premium - Pack VIP de Aplicaciones</title>
+  <!-- Iconos Lucide (Font/Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --border: #30363d;
-      --text: #f0f6fc;
-      --accent: #25D366; /* Verde WhatsApp */
-      --accent-hover: #1da851;
-      --subtext: #8b949e;
+      --bg-dark: #0B0E14;
+      --bg-card: #151A23;
+      --bg-card-hover: #1C2330;
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-green: #25D366;
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --glow: rgba(0, 242, 254, 0.15);
     }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+
+    * {
       margin: 0;
-      padding: 20px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      max-width: 420px;
-      width: 100%;
-      padding: 24px;
+      padding: 0;
       box-sizing: border-box;
-      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      scroll-behavior: smooth;
     }
-    h1 { font-size: 1.5rem; margin-bottom: 8px; }
-    p { color: var(--subtext); font-size: 0.9rem; margin-bottom: 20px; }
-    .price { font-size: 1.3rem; font-weight: bold; color: #3fb950; margin-bottom: 15px; }
-    .qr-box { background: white; padding: 12px; border-radius: 8px; display: inline-block; margin-bottom: 20px; }
-    .qr-box img { width: 180px; height: 180px; display: block; }
-    
-    form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
-    label { font-size: 0.85rem; color: var(--subtext); }
-    input {
-      background: #0d1117;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px;
-      border-radius: 6px;
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- HEADER --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(11, 14, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 12px 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-box img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.4));
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .btn-header {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #000;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      text-decoration: none;
       font-size: 0.9rem;
+      transition: 0.3s;
     }
-    button {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 12px;
+
+    .btn-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      padding: 140px 24px 60px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--accent-cyan);
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    /* --- SECCIÓN APPS (TARJETAS) --- */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .apps-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .app-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-5px);
+      border-color: rgba(0, 242, 254, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .app-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--accent-cyan);
+      margin-bottom: 16px;
+    }
+
+    .app-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .app-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .app-tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: rgba(37, 211, 102, 0.1);
+      color: var(--accent-green);
       border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 8px;
-      font-size: 1rem;
+      font-weight: 600;
     }
-    button:hover { background-color: var(--accent-hover); }
+
+    /* --- SECCIÓN PAGO Y QR --- */
+    .checkout-section {
+      background: linear-gradient(180deg, var(--bg-dark), #0f141d);
+      padding: 80px 24px;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .checkout-box {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #3fb950;
+      margin: 10px 0;
+    }
+
+    .qr-container {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 16px;
+      display: inline-block;
+      margin: 20px 0;
+    }
+
+    .qr-container img {
+      width: 180px;
+      height: 180px;
+      display: block;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: #0B0E14;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+    }
+
+    .btn-whatsapp {
+      width: 100%;
+      background: var(--accent-green);
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1eb855;
+      transform: translateY(-2px);
+    }
+
+    /* --- PREGUNTAS FRECUENTES (FAQ) --- */
+    .faq-section {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 24px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 18px 24px;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      padding: 0 24px 18px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #07090d;
+      border-top: 1px solid var(--border-color);
+      padding: 50px 24px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 16px;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .footer-col p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Pack Apps Premium</h1>
-    <p>Escanea el código QR para pagar y presiona el botón para solicitar tu carpeta de apps.</p>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-box">
+        <img src="logo.png" alt="WolfApps Logo">
+        <span class="logo-text">WOLFAPPS</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#apps">Catálogo</a></li>
+        <li><a href="#comprar">Obtener Pack</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
+      <a href="#comprar" class="btn-header">Comprar Ahora</a>
+    </div>
+  </header>
 
-    <div class="price">Monto a pagar: S/ 20.00 / $5.00</div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge"><i class="fa-solid fa-bolt"></i> Actualización Mensual Incluida</div>
+    <h1>Accede al Mejor Pack de <span>Apps Premium</span> para tu Celular</h1>
+    <p>Desbloquea aplicaciones VIP sin anuncios, funciones avanzadas y acceso directo desde nuestra nube privada.</p>
+  </section>
 
-    <div class="qr-box">
-      <!-- Coloca aquí la imagen de tu código QR en el repositorio -->
-      <img src="qr-pago.png" alt="Código QR de Pago">
+  <!-- SECCIÓN DE APPS (TARJETAS) -->
+  <section id="apps">
+    <div class="section-title">
+      <h2>¿Qué incluye la carpeta?</h2>
+      <p>Algunas de las aplicaciones prémium a las que tendrás acceso inmediato</p>
     </div>
 
-    <form id="paymentForm">
-      <label for="numOp">Número de Operación / Código de Pago:</label>
-      <input type="text" id="numOp" placeholder="Ej: 12345678" required>
+    <div class="apps-container">
+      <!-- Tarjeta 1 -->
+      <div class="app-card">
+        <div class="app-icon"><i class="fa-solid fa-music"></i></div>
+        <h3>Streaming de Música</h3>
+        <p>Escucha tus canciones favoritas sin interrupciones de anuncios y en máxima calidad de audio.</p>
+        <span class="app-tag">Mod Premium</span>
+      </div>
 
-      <button type="button" onclick="enviarWhatsApp()">Enviar Comprobante por WhatsApp</button>
-    </form>
-  </div>
+      <!-- Tarjeta 2 -->
+      <div class="app-card">
+        <div class="app-icon"><i class="fa-solid fa-video"></i></div>
+        <h3>Edición de Video Pro</h3>
+        <p>Exporta videos en 4K, sin marcas de agua y con todos los filtros y efectos VIP desbloqueados.</p>
+        <span class="app-tag">Full Desbloqueado</span>
+      </div>
 
+      <!-- Tarjeta 3 -->
+      <div class="app-card">
+        <div class="app-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Navegación & VPN</h3>
+        <p>Servidores ultrarrápidos ilimitados para proteger tu privacidad y saltar restricciones.</p>
+
+        <span class="app-tag">Ilimitado</span>
+      </div>
+
+      <!-- Tarjeta 4 -->
+      <div class="app-card">
+        <div class="app-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>Herramientas de IA</h3>
+        <p>Asistentes de IA y editores de fotos mejorados con inteligencia artificial sin límites.</p>
+        <span class="app-tag">Acceso VIP</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE PAGO Y QR -->
+  <section class="checkout-section" id="comprar">
+    <div class="checkout-box">
+      <h2>Obtén Acceso Inmediato</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Escanea el código QR desde tu app bancaria</p>
+
+      <div class="price-tag">S/ 20.00 <span style="font-size: 1rem; color: var(--text-muted);">/ $5.00 USD</span></div>
+
+      <div class="qr-container">
+        <!-- Reemplaza con tu imagen QR -->
+        <img src="qr-pago.png" alt="Código QR de Pago">
+      </div>
+
+      <form id="payForm">
+        <div class="form-group">
+          <label for="numOp">Número de Operación / Comprobante:</label>
+          <input type="text" id="numOp" placeholder="Ej: 98765432" required>
+        </div>
+
+        <button type="button" class="btn-whatsapp" onclick="enviarWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Confirmar y Recibir Enlace
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="faq-section" id="faq">
+    <div class="section-title">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Resolvemos todas tus dudas antes de comprar</p>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        ¿Cómo recibiré la carpeta de las aplicaciones?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </button>
+      <div class="faq-answer">
+        Una vez realizado el pago e ingresado el código de transacción, al presionar el botón de WhatsApp nos llegará tu mensaje. Al verificar la transacción, te enviaremos de inmediato el enlace de la carpeta privada alojada en la nube (Google Drive/MEGA).
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        ¿Es compatible con Android e iOS?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </button>
+      <div class="faq-answer">
+        La gran mayoría de las aplicaciones comprimidas están optimizadas para dispositivos Android (formatos APK).
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        ¿Las aplicaciones reciben actualizaciones?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </button>
+      <div class="faq-answer">
+        ¡Sí! El enlace que se te proporciona te da acceso a una carpeta en la nube que actualizamos constantemente con las versiones más recientes de cada app.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo-box" style="margin-bottom: 12px;">
+          <img src="logo.png" alt="Logo" style="width: 35px; height: 35px;">
+          <span class="logo-text" style="font-size: 1.1rem;">WOLFAPPS</span>
+        </div>
+        <p>Tu plataforma confiable para conseguir el mejor software móvil de forma rápida y segura.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#apps">Catálogo de Apps</a></li>
+          <li><a href="#comprar">Método de Pago</a></li>
+          <li><a href="#faq">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <ul>
+          <li><a href="#comprar">Atención por WhatsApp</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 WolfApps Premium. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT WHATSAPP Y FAQ -->
   <script>
+    // Configuración de WhatsApp
     function enviarWhatsApp() {
-      // 1. REEMPLAZA ESTE NÚMERO POR EL TUYO (Incluye código de país, ej: 51 para Perú)
+      // ⚠️ CAMBIA ESTE NÚMERO POR EL TUYO CON CÓDIGO DE PAÍS (Ejemplo Perú: 51XXXXXXXXX)
       const numeroTelefono = "51987654321"; 
 
       const numOperacion = document.getElementById("numOp").value;
@@ -98,14 +603,19 @@
         return;
       }
 
-      // Crear mensaje personalizado
-      const mensaje = `Hola! Ya realicé el pago por QR del Pack de Apps Premium.%0A*N° de Operación:* ${encodeURIComponent(numOperacion)}%0AAdjunto el comprobante. ¡Quedo atento al enlace de la carpeta!`;
+      const mensaje = `Hola WolfApps! 👋%0A%0AHe realizado el pago del Pack Premium.%0A*N° de Operación:* ${encodeURIComponent(numOperacion)}%0A%0AQuedo a la espera del enlace de la carpeta. ¡Muchas gracias!`;
 
-      // Redirigir a WhatsApp
-      const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
-      window.open(urlWhatsApp, "_blank");
+      const url = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
+      window.open(url, "_blank");
     }
-  </script>
 
+    // Lógica para Preguntas Frecuentes (Acordeón)
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
